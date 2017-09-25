@@ -1,0 +1,40 @@
+<bootstrap-grid>
+  <container>
+    <row>
+      <column sm="12">
+        <md-form-field>
+          <input mdInput placeholder="Github User" #githubUser value="yyx990803" required="required" (keyup.enter)="callApi(githubUser.value)">
+        </md-form-field>
+        <button md-raised-button color="primary" type="submit" (click)="callApi(githubUser.value)">Search</button>
+        <button md-raised-button color="primary" type="submit" (click)="clearData()" [disabled]="!showList">Clear Data</button>
+      </column>
+      <column sm="2" smPush="5" smPull="5" *ngIf="loading">
+        <md-spinner></md-spinner>
+      </column>
+      <ng-container *ngIf="!loading && showList">
+        <column sm="12" class="text-center">
+          <a href="{{user.githubPage}}" target="_blank">
+            <img src="{{user.imgUrl}}" mdTooltipPosition="above" mdTooltip="{{user.imgAlt}}" width="120px" height="120px">
+          </a>
+        </column>
+        <column class="columns-grid" sm="6" md="6" lg="4"
+                *ngFor="let item of (data ? data.slice(0,5): []); let i = index">
+          <md-card>
+            <md-card-title>{{item.name}}</md-card-title>
+            <md-card-subtitle><strong>Created:</strong> {{item.created_at | date }} </md-card-subtitle>
+            <md-card-subtitle><strong>Updated:</strong> {{item.updated_at | date }} </md-card-subtitle>
+            <md-card-content>
+              <button md-raised-button>
+                <a href="{{item.html_url }}" target="_blank">Repo url</a>
+              </button>
+              <md-chip-list *ngIf="item.language != null">
+                <md-chip color="primary">{{item.language}}</md-chip>
+              </md-chip-list>
+            </md-card-content>
+          </md-card>
+        </column>
+      </ng-container>
+    </row>
+  </container>
+</bootstrap-grid>
+

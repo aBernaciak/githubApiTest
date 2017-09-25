@@ -1,0 +1,37 @@
+@primary: #ffd740;
+@secondary: #673ab7;
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.mat-card {
+  height: 100%;
+}
+.columns-grid {
+  margin-bottom: 20px;
+  .mat-card {
+    background: @primary;
+    text-align: center;
+  }
+  &:nth-of-type(2n) {
+    .mat-card {
+      background: @secondary;
+      color: #fff;
+      .mat-card-subtitle {
+        color: #fff;
+      }
+    }
+  }
+  .mat-raised-button {
+    padding: 0;
+    a {
+      padding: 0 16px;
+      width: 100%;
+    }
+  }
+}
+.text-center {
+  text-align: center;
+}
