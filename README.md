@@ -1,7 +1,8 @@
 # Pracujpl
 
+User enters nickname of Github user. Application then calls API and lists entered user repositories and his profile image and link to his account. 
+All errors are handled.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
-Calls API and lists user repositories. 
 
 ## Development server
 
